@@ -8,7 +8,15 @@
     "Description": "This project is a good learning project to get comfortable with soldering and programming an Arduino.",
     "Ratings": [
       5,
-      5
+      5,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
     ]
   },
   {
@@ -63,7 +71,29 @@
     "Url": "https://twitter.com/sailorhg/status/1090122822007963648",
     "Title": "Pastel hardware kit",
     "Description": "Pastel hardware kits complete with custom manufactured pastel alligator clips.",
-    "Ratings": null
+    "Ratings": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      0,
+      1,
+      1,
+      1,
+      2,
+      2,
+      4,
+      1,
+      1,
+      1
+    ]
   },
   {
     "Id": "sailorhg-led",

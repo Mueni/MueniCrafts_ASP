@@ -49,12 +49,34 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                  
+                    @if (voteCount == 0)
+                    {
+                        <span>Be the first to vote!</span>
+                    }
+                    else
+                    {
+                        <span>@voteCount @voteLabel</span>
+                    }
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        var currentStar = i;
+                        if (i <= currentRating)
+                        {
+                            <span class="fa fa-star checked" @onclick="(e => SubmitRating(currentStar))"></span>
+                        }
+                        else
+                        {
+                            <span class="fa fa-star" @onclick="(e => SubmitRating(currentStar))"></span>
+                        }
+                    }
                 </div>
             </div>
         </div>
     </div>
 }
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 @code {
@@ -66,6 +88,37 @@
 
         selectProductId = productId;
         selectProduct = ProductService.GetProducts().First(x => x.Id == productId);
+    }
+
+    int currentRating = 0;
+    int voteCount = 0;
+    string voteLabel;
+
+
+    void GetCurrentRating()
+    {
+        if (selectProduct.Ratings == null)
+        {
+            currentRating = 0;
+            voteCount = 0;
+        }
+
+        else
+        {
+            voteCount = selectProduct.Ratings.Count();
+            voteLabel = voteCount > 1 ? "Votes": "Vote";
+            currentRating = selectProduct.Ratings.Sum() / voteCount;
+
+        }
+
+        Console.WriteLine("$ Current rating for {selectProduct.Id} : {currentRating}");
+    }
+
+    void SubmitRating(int rating)
+    {
+        Console.WriteLine("Rating received for {selectProduct}: {rating}");
+        ProductService.AddRating(selectProductId, rating);
+        SelectProduct(selectProductId);
     }
 
 }
