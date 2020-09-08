@@ -29,6 +29,8 @@ namespace MueniCrafts
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddControllers();
+            services.AddServerSideBlazor();
             services.AddTransient<JsonFileProductFile>();
         }
 
@@ -56,7 +58,8 @@ namespace MueniCrafts
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapControllers(); 
+                endpoints.MapControllers();
+                endpoints.MapBlazorHub();
             /*    endpoints.MapGet("products", (context) =>
                 {
                     var products = app.ApplicationServices.GetService<JsonFileProductFile>().GetProducts();
