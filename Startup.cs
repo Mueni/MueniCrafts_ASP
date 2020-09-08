@@ -56,13 +56,14 @@ namespace MueniCrafts
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapGet("products", (context) =>
+                endpoints.MapControllers(); 
+            /*    endpoints.MapGet("products", (context) =>
                 {
                     var products = app.ApplicationServices.GetService<JsonFileProductFile>().GetProducts();
                     var json = JsonSerializer.Serialize<IEnumerable<Product>>(products);
 
                     return context.Response.WriteAsync(json);
-                });
+                });*/
             });
         }
     }
